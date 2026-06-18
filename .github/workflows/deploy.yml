@@ -1,10 +1,9 @@
 name: Deploy
-
 on:
   push:
     branches:
       - main
-
+  workflow_dispatch:
 jobs:
   deploy:
     runs-on: self-hosted
@@ -12,20 +11,21 @@ jobs:
       - name: Atualizar submodules
         run: |
           cd ~/API-5SEM
-          git pull origin main
+          git fetch origin
+          git reset --hard origin/main
           git submodule update --remote --merge
 
       - name: Parar containers
         run: |
           cd ~/API-5SEM
-          sudo docker compose down
-
+          docker compose down
+          
       - name: Rebuildar e subir
         run: |
           cd ~/API-5SEM
-          sudo docker compose up -d --build
+          docker compose up -d --build
 
       - name: Verificar status
         run: |
           cd ~/API-5SEM
-          sudo docker compose ps
+          docker compose ps

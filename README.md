@@ -3,7 +3,7 @@
 <br />
 <span id="denarius-data"></span>
 
-# <p align="center">Denarius Data</p>
+# <p align="center">Denarius Data </p>
 
 <p align="center">
     <a href="#challenge">Challenge</a>  |  
